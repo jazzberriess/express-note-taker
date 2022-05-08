@@ -18,18 +18,28 @@ This applicaation was built using the following technologies and languages:
 * [Express](https://expressjs.com/)
 * [UUID](https://www.npmjs.com/package/uuid)
 * [Bootstrap](https://getbootstrap.com/)
+* [nodemon](https://nodemon.io/)
 * HTML
 * CSS
 * JavaScript
 
 ## Installation
-No installation is required for this project! Check out the deployed application over on Heroku.
-Alternatively, clone or fork this repo and then run `npm install` to get going on your local host.
+No installation is required for this project! Check out the [deployed application over on Heroku](https://dashboard.heroku.com/apps/dry-reaches-37181).
+Alternatively, clone or fork [the express-note-taker repo](https://github.com/jazzberriess/express-note-taker) and then run `npm install` to get going on your local host.
 
 ## Usage
 Create a note title and enter the text for the note, then click the save button. Data will be retained on browser refresh and will only be removed if the user chooses to delete it via the delete button.
 
 ## Live Demo
+
+### Demonstration gif of the application deployed on Heroku:
+![Demo of the application on Heroku](./images/note-taker-preview.gif)
+
+### Screenshot of the rendered index/splash page:
+![Screenshot of the index/splash page](./images/note-taker-index-page.png)
+
+### Screenshot of the rendered notes page:
+![Screenshot of the notes page](./images/note-taker-notes-page.png)
 
 ## Resources
 * [Express Documentation](https://expressjs.com/)
@@ -40,6 +50,7 @@ Create a note title and enter the text for the note, then click the save button.
 * [How to read and write a JSON object to file in Node.js](https://attacomsian.com/blog/nodejs-write-json-object-to-file)
 * [Stack Overflow - Can't access object property ](https://stackoverflow.com/questions/17546953/cant-access-object-property-even-though-it-shows-up-in-a-console-log)
 * [MDN - HTTP Response Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses)
+* [Heroku documentation](https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true)
 
 ## License
 
