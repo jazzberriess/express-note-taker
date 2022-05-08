@@ -1,3 +1,5 @@
+//Thanks to Trilogy for the helper functions and file
+
 const fs = require('fs');
 const util = require('util');
 
