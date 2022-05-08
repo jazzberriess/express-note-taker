@@ -101,28 +101,37 @@ app.delete("/api/notes/:id", (req, res) => {
 
     const noteId = req.params.id;
 
-    //read the db.json file
-    fs.readFile("db/db.json", (err, notesContent) => {
-        if (err) {
-            console.error(err);
-        } else {
-            const noteList = JSON.parse(notesContent);
-
-            //filter out the noteId and create a new array of data with the noteId filtered out
-            const updatedNoteList = noteList.filter(note => note.id !== noteId);
-            // console.log(updatedNoteList);
-
-            //write the updatedNoteList to the db.json file
-            fs.writeFile("db/db.json", JSON.stringify(updatedNoteList, null, 4), (err) => {
-                if (err) {
-                    console.error(err)
-                } else {
-                    return res.json(`Removed Note ID ${noteId}`)
-                }
-            });
-        }
-    })
+    readFromFile("./db/db.json")
+        .then(notesContent => JSON.parse(notesContent))
+        .then((parsedNotesContent) => {
+            const updatedNoteList = parsedNotesContent.filter(note => note.id !== noteId);
+            writeToFile("./db/db.json", updatedNoteList)
+            return res.json(`Removed Note ID ${noteId}`);
+        })
 })
+
+//read the db.json file
+//     fs.readFile("db/db.json", (err, notesContent) => {
+//     if (err) {
+//         console.error(err);
+//     } else {
+//         const noteList = JSON.parse(notesContent);
+
+//         //filter out the noteId and create a new array of data with the noteId filtered out
+//         const updatedNoteList = noteList.filter(note => note.id !== noteId);
+//         // console.log(updatedNoteList);
+
+//         //write the updatedNoteList to the db.json file
+//         fs.writeFile("db/db.json", JSON.stringify(updatedNoteList, null, 4), (err) => {
+//             if (err) {
+//                 console.error(err)
+//             } else {
+//                 return res.json(`Removed Note ID ${noteId}`)
+//             }
+//         });
+//     }
+// })
+// })
 
 //wildcard route to send users to the index.html page
 app.get("*", (req, res) => {
