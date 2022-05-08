@@ -121,55 +121,95 @@ app.post("/api/notes", (req, res) => {
 app.delete("/api/notes/:id", (req, res) => {
     console.log(`${req.method} request received to delete notes.`);
     // const data = JSON.parse(notesDb);
-    const { id } = req.params;
+    const noteId = req.params.id;
 
-    console.log(id, + "line 121");
-    // console.log(notesDb);
+    console.log(noteId);
 
-    for (let i = 0; i < notesDb.length; i++) {
-        console.log(notesDb[i].id)
-        let noteIndex = id.indexOf(notesDb);
+    fs.readFile("db/db.json", (err, notesContent) => {
+        if (err) {
+            console.error(err);
+        } else {
+            const noteList = JSON.parse(notesContent);
+            const updatedNoteList = noteList.filter(note => note.id !== noteId);
+            console.log(updatedNoteList);
+            fs.writeFile("db/db.json", JSON.stringify(updatedNoteList, null, 4), (err) => {
+                err ? console.error(err) : res.json(`Removed Note ID ${noteId}`);
+            });
 
-        if (id === notesDb[i].id) {
-
-
-
-            // notesDb.splice(noteIndex);
-
-            console.log(noteIndex);
-
-            fs.writeFile("./db/db.json", JSON.stringify(notesDb, null, 4), (err) => {
-                err ? console.error(err) : console.log(`Note ${id} removed!`)
-                // })
-            })
         }
-        else {
-            // res.send({ Message: "Oops! Unable to delete that ID!" })
-            console.log(id, "line 140")
-            console.log("Boo");
-        }
-    }
-    // }
+    })
+})
 
-    // notes.splice()
+// console.log(notesDb);
 
-    // data.forEach(note => {
-    //     if (note.id === req.params.id) {
-    //         res.json({ Message: `Note ${note.id} removed!` })
+//     fs.readFile("./db/db.json", "utf-8", (err, noteContent) => {
+//         if (err) {
+//             console.error(err);
+//         } else {
+//             let notes = JSON.parse(noteContent);
+//             console.log(notes.id);
+
+//         }
+//             )
+// }
+//     })
+
+//     for (let i = 0; i < notesDb.length; i++) {
+//         console.log(notesDb[i].id)
+//         const notes = JSON.parse(notesDb);
+
+//         if (noteId === notesDb[i].id) {
+
+//             const updatedNotes = notes.filter(note = notes.id !== noteId);
+
+//             console.log(updatedNotes);
+
+//             fs.writeFile("./db/db.json", JSON.stringify(updatedNotes, null, 4), (err) => {
+//                 err ? console.error(err) : console.log(`Note ${updatedNotes.id} removed!`);
+
+//                 res.json({ Message: `Note ${id} removed!` })
+//             })
+//         }
+//     }
+// });
 
 
-    //         const noteId = notes.some(note => note.id === req.params.id);
-    //         note.splice(noteId);
-    //         console.log(noteContent);
+// notesDb.splice(noteIndex);
 
-    //         fs.writeFile("./db/db.json", JSON.stringify(noteContent, null, 4), (err) => {
-    //             err ? console.error(err) : console.log(`Note ${noteId.title} removed!`)
-    //         })
-    //     }
-    // })
-    // })
+//         console.log(noteIndex);
 
-});
+//         fs.writeFile("./db/db.json", JSON.stringify(notesDb, null, 4), (err) => {
+//             err ? console.error(err) : console.log(`Note ${id} removed!`)
+//             // })
+//         })
+//     }
+//     else {
+// res.send({ Message: "Oops! Unable to delete that ID!" })
+//         console.log(id, "line 140")
+//         console.log("Boo");
+//     }
+// }
+// }
+
+// notes.splice()
+
+// data.forEach(note => {
+//     if (note.id === req.params.id) {
+//         res.json({ Message: `Note ${note.id} removed!` })
+
+
+//         const noteId = notes.some(note => note.id === req.params.id);
+//         note.splice(noteId);
+//         console.log(noteContent);
+
+//         fs.writeFile("./db/db.json", JSON.stringify(noteContent, null, 4), (err) => {
+//             err ? console.error(err) : console.log(`Note ${noteId.title} removed!`)
+//         })
+//     }
+// })
+// })
+
+// });
 
 //wildcard route to send users to the index.html page
 app.get("*", (req, res) => {
