@@ -2,6 +2,8 @@
 const express = require("express");
 const path = require("path");
 const uuid = require("uuid");
+
+//helper variables to read,write and append file. Thank you Trilogy!
 const {
     readFromFile,
     writeToFile,
