@@ -4,33 +4,23 @@
         "text": "Test text"
     },
     {
-        "id": "a61dbe86-88d6-499c-89af-0efc33a51d5c",
-        "title": "Testing post requests",
-        "text": "Testing post requests via Insomnia"
+        "id": "ae4a56f8-dcb0-45f1-b0f2-724e7db8a71b",
+        "title": "How to use the Note Taker",
+        "text": "To view an existing note, simply click on the note title on the left. To add a note, click on the + button at the top right corner and then enter a note title and the text for your note in the fields. When you've written your note, click on the save icon at the top right to store it for later!"
     },
     {
-        "id": "39ff095e-ac85-4e99-b15a-ffc6b3acaab3",
-        "title": "Testing post requests",
-        "text": "Testing post requests via Insomnia"
+        "id": "bc3404f4-2689-4f02-a7ae-15eed9eb810c",
+        "title": "Testing redirect",
+        "text": "Test"
     },
     {
-        "id": "347786c2-b41f-4b4d-b9d5-00525be548b6",
-        "title": "Testing post requests",
-        "text": "More testing in insomnia!"
+        "id": "18f88258-f58e-4210-ba7b-42e031ec9a9e",
+        "title": "OOOOh",
+        "text": "it works?"
     },
     {
-        "id": "4a409223-8519-4205-a84c-5ffc6e5ae02f",
-        "title": "Testing post requests",
-        "text": "More testing in insomnia!"
-    },
-    {
-        "id": "82ce9a36-2113-414c-a573-410eac9a1819",
-        "title": "Testing post requests",
-        "text": "More testing in insomnia!"
-    },
-    {
-        "id": "2e55115d-2695-46c7-86f9-08470f1c297a",
-        "title": "Testing post requests",
-        "text": "More testing in insomnia!"
+        "id": "bdb9519e-bd15-4285-81a7-ed1dcaa8ad0c",
+        "title": "thingy",
+        "text": "thingy"
     }
 ]

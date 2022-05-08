@@ -39,6 +39,7 @@ Create a note title and enter the text for the note, then click the save button.
 * [Node Express Tutorial 5](https://www.youtube.com/watch?v=K9jTQPb0Xso)
 * [How to read and write a JSON object to file in Node.js](https://attacomsian.com/blog/nodejs-write-json-object-to-file)
 * [Stack Overflow - Can't access object property ](https://stackoverflow.com/questions/17546953/cant-access-object-property-even-though-it-shows-up-in-a-console-log)
+* [MDN - HTTP Response Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses)
 
 ## License
 

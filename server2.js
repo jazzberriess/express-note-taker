@@ -2,8 +2,9 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const notesDb = require("./db/db")
+// const notesDb = require("./db/db")
 const uuid = require("uuid");
+const { readFromFile, writeToFile, readAndAppend } = require("./helpers/fsUtils");
 
 //use express.js
 const app = express();
@@ -26,19 +27,21 @@ app.get("/notes", (req, res) => {
 //route handler to retrieve notes data from the db.json file
 app.get("/api/notes", (req, res) => {
     console.log(`${req.method} request received to retrieve notes. Line 27`)
-    // return res.json(notesDb)
+    readFromFile("./db/db.json")
+        .then(notesContent => res.json(JSON.parse(notesContent)));
+    // const notes = JSON.parse
+    // return res.json(JSON.parse(notesDb))
     // fs.readFile("./db/db.json", (err, noteContent) => {
     //     err ? console.error(err) : res.json(JSON.parse(noteContent))
     //     return;
     // })
-    fs.readFile("./db/db.json", "utf-8", (err, noteContent) => {
-        if (err) {
-            console.error(err);
-        } else {
-            fs.writeFile("./db/db.json", res.json(JSON.stringify(noteContent, null, 4))
-            )
-        }
-    })
+    // fs.readFile("./db/db.json", "utf-8", (err, noteContent) => {
+    //     if (err) {
+    //         console.error(err);
+    //     } else {
+    //         res.json(JSON.stringify(noteContent, null, 4))
+    //     }
+    // })
 });
 
 //route handler for the POST request to save a new note to the request body and add to the db.json file
@@ -55,34 +58,41 @@ app.post("/api/notes", (req, res) => {
             title: req.body.title,
             text: req.body.text
         };
-
-        //read the db.json file
-        fs.readFile("./db/db.json", "utf-8", (err, noteContent) => {
-            if (err) {
-                console.error(err);
-            } else {
-
-                //push newNote data
-                const notes = JSON.parse(noteContent);
-                notes.push(newNote);
-
-                //write to the db.json file
-                fs.writeFile("./db/db.json", JSON.stringify(notes, null, 4), (err) => {
-                    err ? console.error(err) : console.log(`New note ${newNote.title} added!`)
-                })
-                //success response
-                const serverResponse = {
-                    status: "Success!",
-                    body: newNote,
-                };
-
-                // console.log(serverResponse);
-                return res.status(201).json(serverResponse);
-            }
-        })
+        readAndAppend(newNote, "./db/db.json");
+        res.status(201).json({ Message: "Success!", Body: `${newNote}` });
     } else {
-        return res.status(400).json({ Message: "Please enter both a title for your note and text." });
+        res.status(400).json({ Message: "Please enter both a title for your note and text." });
     }
+
+    //read the db.json file
+    // fs.readFile("./db/db.json", "utf-8", (err, noteContent) => {
+    //     if (err) {
+    //         console.error(err);
+    //     } else {
+
+    //         //push newNote data
+    //         const notes = JSON.parse(noteContent);
+    //         notes.push(newNote);
+
+    //         //write to the db.json file
+    //         fs.writeFile("./db/db.json", JSON.stringify(notes, null, 4), (err) => {
+    //             err ? console.error(err) : console.log(`New note ${newNote.title} added!`)
+    //         })
+    //     }
+    // })
+
+    //success response
+    // const serverResponse = {
+    //     status: "Success!",
+    //     body: newNote,
+    // };
+
+    // console.log(serverResponse);
+    //     return res.status(201).json({Message: "Success!", Body: `newNote`});
+
+    // } else {
+    //     return res.status(400).json({ Message: "Please enter both a title for your note and text." });
+    // }
 });
 
 //delete note
