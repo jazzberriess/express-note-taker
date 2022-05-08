@@ -9,18 +9,13 @@
         "text": "To view an existing note, simply click on the note title on the left. To add a note, click on the + button at the top right corner and then enter a note title and the text for your note in the fields. When you've written your note, click on the save icon at the top right to store it for later!"
     },
     {
-        "id": "bc3404f4-2689-4f02-a7ae-15eed9eb810c",
-        "title": "Testing redirect",
-        "text": "Test"
+        "id": "c94e49ea-d74a-4ed9-ad26-4bd165fcb006",
+        "title": "Hello",
+        "text": "World!"
     },
     {
-        "id": "18f88258-f58e-4210-ba7b-42e031ec9a9e",
-        "title": "OOOOh",
-        "text": "it works?"
-    },
-    {
-        "id": "6a1bcb8a-80ae-4816-a796-4c9bc69d50d7",
-        "title": "Hello World",
-        "text": "Some text"
+        "id": "c6d327a6-946f-4d66-851b-9502b8b8a02e",
+        "title": "World",
+        "text": "Totle"
     }
 ]
